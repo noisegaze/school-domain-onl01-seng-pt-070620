@@ -1,38 +1,34 @@
-# code here!
+require 'pry'
 class School 
   
-  attr_accessor :roster 
+  attr_accessor :roster, :name 
   
   def initialize(name)
     @name = name
     @roster = {}
   end
   
-  def add_student=(name,grade)
-    @name = name 
-    @grade = name 
-    @roster[@grade]=[]
-    @roster[@grade] << @name 
-  end
-  
   def add_student(name,grade)
-    @name = name 
-    @grade = grade
-  end 
-  
-  def grade=(grade)
-    @grade
+    if @roster[grade] == nil 
+     @roster[grade]=[]
+   end 
+    @roster[grade] << name 
   end
   
   def grade(grade)
-    @grade = grade 
-  end 
+    @roster[grade]
+  end
   
-  def sort=(sort)
-    @sort = @roster.name.sort
-  end 
-  
-  def sort 
-    @sort = @roster.name.sort
+ 
+  def sort
+    collection = {}
+    @roster.each do |grade,names|
+      collection[grade] = names.sort 
+    end
+    collection
   end
 end 
+
+
+
+
